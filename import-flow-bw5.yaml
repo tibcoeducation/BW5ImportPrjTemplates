@@ -61,17 +61,6 @@ spec:
       input:
         url: ${{ "https://"  + (parameters.repoUrl | parseRepoUrl).host + "/" + (parameters.repoUrl | parseRepoUrl).owner + "/" +  (parameters.repoUrl | parseRepoUrl).repo }}
 
-    - id: extract
-      name: Extract Parameters
-      action: tibco:extract-parameters
-      input:
-        failOnError: true
-        extractParameters:
-          bw5_project:
-            type: xml
-            filePath: ${{ parameters.application_folder + "/" + parameters.application + "/.folder"}}
-            jsonPath: "$['Repository:repository'].folder"
-
   output:
     links:
       - title: Business Works 5 Documentation
